@@ -1,0 +1,333 @@
+:root {
+  --primary-color: #3d5a80;
+  --secondary-color: #98c1d9;
+  --tertiary-color: #e0fbfc;
+  --quaternary-color: #ee6c4d;
+  --quinary-color: #293241;
+  --white-belt: #eff1f3;
+  --blue-belt: #27187e;
+  --brown-belt: #43291f;
+  --black-belt: #000c14;
+  --red-belt: #c1121f;
+  --yellow-belt: #fdc500;
+  --transform: translateX(20%);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  background-color: #e0f7fa;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  height: 100vh;
+}
+
+.sidebar-header {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--tertiary-color);
+}
+.user-infor img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.search-chat {
+  position: relative;
+}
+.search-chat input {
+  background-color: var(--tertiary-color);
+}
+.search-chat i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+.user-infor-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.user-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.user-item-actions {
+  display: flex;
+  flex-direction: column;
+  width: 26%;
+  align-items: flex-end;
+}
+.user-item-actions i {
+  padding: 5px;
+  padding-right: 0;
+}
+.user-item-content {
+  margin-left: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.user-infor-content h5 {
+  color: var(--quaternary-color);
+  font-size: 18px;
+}
+.user-item-content h5 {
+  color: var(--quaternary-color);
+  font-size: 15px;
+  float: left;
+}
+.user-infor-content p {
+  font-size: 12px;
+  float: left;
+}
+.user-item-content p {
+  font-size: 12px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis;
+}
+.list-group-item {
+  border: none;
+  padding: 10px 15px;
+}
+.list-group li {
+  border: none;
+}
+.list-group-item:hover {
+  background-color: var(--tertiary-color);
+  border-radius: 10px;
+}
+.list-group-item.actived {
+  background-color: var(--tertiary-color);
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+.item-links {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.chat-area {
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--tertiary-color);
+}
+.chat-header {
+  border-bottom: 1px solid var(--tertiary-color);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.chat-header i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  max-height: 74vh;
+  position: relative;
+  z-index: 1;
+  /* background-image: url(../assets/img/background_p3.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+}
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chat-messages::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250%;
+  height: 100%;
+  background: url(../static/assets/img/background_p3.png) no-repeat center
+    center;
+  background-size: cover;
+  opacity: 0.2; /* Adjust the opacity here */
+  z-index: -1;
+  transform: translateX(-29%);
+}
+.chat-messages::-webkit-scrollbar {
+  display: none;
+}
+.chat-messages img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-top: 30px;
+}
+.message {
+  margin-bottom: 10px;
+}
+
+.message.received {
+  text-align: left;
+  display: flex;
+}
+.message.received p {
+  padding: 20px;
+  background-color: var(--secondary-color);
+  margin-left: 10px;
+  display: inline-block;
+  border-radius: 20px;
+  height: 100%;
+}
+.message.sent p {
+  padding: 20px;
+  background-color: var(--quaternary-color);
+  margin-right: 10px;
+  display: inline-block;
+  border-radius: 20px;
+  object-fit: cover;
+}
+.message.sent {
+  text-align: right;
+}
+
+.chat-input {
+  display: flex;
+  position: relative;
+  padding: 20px 20px;
+  width: 100%;
+  background-color: var(--quinary-color);
+}
+.microphone-btn {
+  position: absolute;
+  top: 44px;
+  left: 40px;
+  transform: translate(-50%, -50%);
+}
+.function-btn {
+  position: absolute;
+  top: 44px;
+  right: 30px;
+  transform: translate(-50%, -50%);
+}
+.chat-input i,
+.function-btn i {
+  font-size: 20px;
+}
+.chat-input input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+.chat-input input::placeholder {
+  padding-left: 20px;
+}
+.function-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.function-btn i {
+  margin-right: 4px;
+}
+.btn-send-container {
+  border-radius: 48%;
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-bottom: 0;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  cursor: pointer;
+}
+.btn-send-container .btn-send {
+  font-size: 29px;
+  display: inline-block;
+  color: white;
+}
+
+.user-profile {
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 150px;
+}
+
+.profile-header img {
+  width: 100px;
+  height: 100px;
+}
+.user-status-content img {
+  width: 70px;
+  height: 50px;
+}
+.profile-actions {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-actions button {
+  margin: 5px;
+}
+
+.profile-attachments {
+  text-align: center;
+}
+
+.profile-attachments button {
+  margin: 5px;
+}
+.button-views-profile {
+  background-color: var(--tertiary-color);
+  border: 1px solid black;
+  padding: 5px 40px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.button-views-profile:hover {
+  background-color: var(--quaternary-color);
+  color: #ffffff;
+}
+.attachments-items a {
+  text-decoration: none;
+  color: inherit;
+}
+.attachments-items a:hover {
+  color: var(--quaternary-color);
+}
+a i {
+  color: black;
+}
+a p {
+  color: black;
+}
+
+/* ===chỗ này là tab chat=== */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+.time {
+  font-size: 10px;
+}

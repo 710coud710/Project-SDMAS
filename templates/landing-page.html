@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing-page.css') }}" />
+    <title>Loading page</title>
+  </head>
+  <body>
+    <div id="main-img">
+      <header class="header fix">
+        <div class="box"></div>
+        <div>
+          <div class="main-content">
+            <div class="body">
+              <!-----logo---------->
+              <a href="{{ url_for('home') }}">
+                <img  
+                  class="logo"                  
+                  src="../static/assets/img/D3-logo-sdmas-Black.png"
+                  alt="logo"
+                /></a>              
+              <!-- nav -->
+              <nav class="nav">
+                <ul>
+                  <li>Võ thuật tự vệ</li>
+                  <li>
+                    <a href="{{ url_for('history') }}" class="btn header-ls">
+                      Lịch sử hoạt động
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for('organizationalChart') }}" class="btn header-sd"
+                      >Sơ đồ bộ máy</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="loichao home">
+        <div class="noidung">
+          <h1>Chào mừng đến với SDMAS</h1>
+          <p>Hãy cùng khám phá tiềm năng võ thuật của con người</p>
+          <a href="../templates/login.html" class="signup btnsu"
+            >Khám phá ngay</a
+          >
+        </div>
+      </div>
+      <!-- ======================= hero ==========================-->
+
+      <main>
+        <div class="hero">
+          <h1>Những sự kiện</h1>
+          <div class="main-hero">
+            <div class="body-hero slider-container">
+              <div class="slider">
+                <div class="slides">
+                  <input type="radio" name="radio-btn" id="radio1" />
+                  <input type="radio" name="radio-btn" id="radio2" />
+                  <input type="radio" name="radio-btn" id="radio3" />
+                  <input type="radio" name="radio-btn" id="radio4" />
+
+                  <div class="slide first">
+                    <img
+                      src="../static/assets/img/Banner theo sk.svg"
+                      class="anh"
+                      alt=""
+                    />
+                  </div>
+                  <div class="slide">
+                    <img src="../static/assets/img/banner2.png" alt="" />
+                  </div>
+                  <div class="slide">
+                    <img src="../static/assets/img/banner3.png" alt="" />
+                  </div>
+                  <div class="slide">
+                    <img src="../static/assets/img/banner4.png" alt="" />
+                  </div>
+
+                  <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                  </div>
+                </div>
+                <div class="navigation-manual">
+                  <label for="radio1" class="manual-btn"></label>
+                  <label for="radio2" class="manual-btn"></label>
+                  <label for="radio3" class="manual-btn"></label>
+                  <label for="radio4" class="manual-btn"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contens">
+          <h1>Đề cao các bản tính của con người</h1>
+          <div class="three-box">
+            <div class="box-contens box1">
+              <img src="../static/assets/img/ic.svg" alt="" />
+              <h2>Tôn trọng</h2>
+
+              <h3>
+                "Tôn trọng người trước, người sau, Hòa thuận rèn luyện, ngẩng
+                đầu không cao."
+              </h3>
+            </div>
+            <div class="box-contens box2">
+              <img src="../static/assets/img/ic (1).svg" alt="" />
+              <h2>Chính trực</h2>
+              <h3>
+                "Chính trực như trời trong sáng, Hành động đúng đắn, lòng không
+                hoài nghi."
+              </h3>
+            </div>
+            <div class="box-contens box3">
+              <img src="../static/assets/img/ic.png" alt="" />
+              <h2>Kiên nhẫn</h2>
+              <h3>
+                "Kiên nhẫn vượt qua gian khó, Bền chí luyện rèn, thành quả chẳng
+                xa."
+              </h3>
+            </div>
+          </div>
+          <div class="two-box">
+            <div class="box-contens box4">
+              <img src="../static/assets/img/ic (1).png" alt="" />
+              <h2>Kỷ luật</h2>
+              <h3>
+                "Kỷ luật giữ mình thật nghiêm, Tâm luôn tập trung, lòng chẳng
+                buông lơi."
+              </h3>
+            </div>
+            <div class="box-contens box5">
+              <img src="../static/assets/img/ic (2).png" alt="" />
+              <h2>Khiêm tốn</h2>
+              <h3>
+                "Khiêm tốn không bao giờ thiếu, Học hỏi mỗi ngày, vươn xa hơn
+                người."
+              </h3>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ========================footer==================== -->
+    <footer class="footer">
+      <div class="main-contents">
+        <div class="row">
+          <!-- column1 -->
+          <div class="column">
+            <ul class="list">
+              <li><a href="#!">Home</a></li>
+            </ul>
+          </div>
+          <!-- column2 -->
+          <div class="column">
+            <ul class="list">
+              <li><a href="#!">Contact</a></li>
+              <li><a href="#!">Support</a></li>
+              <li><a href="#!">Blog</a></li>
+              <li><a href="#!">FAQs</a></li>
+            </ul>
+          </div>
+          <!-- column3 -->
+          <div class="column">
+            <ul class="list">
+              <li><a href="#!">Privacy</a></li>
+              <li><a href="#!">Security</a></li>
+              <li><a href="#!">Terms</a></li>
+            </ul>
+          </div>
+          <!-- column4 -->
+          <div class="column">
+            <ul class="list">
+              <li>
+                <a href="https://www.youtube.com/@vothuattuve578">YouTube</a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/Ryo.SDMAS?mibextid=LQQJ4d"
+                  >Facebook</a
+                >
+              </li>
+              <li>
+                <a href="https://www.tiktok.com/@sdmas_ictu?lang=vi-VN"
+                  >Tiktok</a
+                >
+              </li>
+              <li><a href="#!">Instagram</a></li>
+            </ul>
+          </div>
+          <!-- column5 -->
+          <div class="column">
+            <img
+              src="../static/assets/img/Remove-bg.ai_1725687525907.png"
+              alt="logo"
+              class="logo"
+            />
+            <pre class="desc">
+Võ Thuật Tự vệ có nguồn cố là môn võ của người Việt Cổ, là 
+bộ môn võ thuật lâu đời của người Việt Nam từ thời kì Hùng 
+Vương.
+Sở dĩ nguồn gốc của bộ môn Võ Thuật Tự Vệ được cho là hình
+thành, xây dựng bởi dân tộc Giao Chỉ vì những kĩ thuật đặc 
+thù, được đúc kết bởi các võ sư chuyên môn và giảng dạy cho
+các võ sinh, môn sinh đều là những kĩ thuật lầy bé đánh lớn,
+lấy yếu địch mạnh. 
+</pre
+            >
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© sdmas.com</p>
+        </div>
+      </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/landing-page.js') }}"></script>
+  </body>
+</html>

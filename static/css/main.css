@@ -1,0 +1,19 @@
+:root {
+  --primary-color: #3d5a80;
+  --secondary-color: #98c1d9;
+  --tertiary-color: #e0fbfc;
+  --quaternary-color: #ee6c4d;
+  --quinary-color: #293241;
+  --white-belt: #eff1f3;
+  --blue-belt: #27187e;
+  --brown-belt: #43291f;
+  --black-belt: #000c14;
+  --red-belt: #c1121f;
+  --yellow-belt: #fdc500;
+  --transform: translateX(20%);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

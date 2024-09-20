@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khách</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../static/css/login.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container container-fluid">
+        <a href="../html/index.html" class="logo-link">
+          <img
+            src="../static/assets/img/D3-logo-sdmas-Black.png"
+            alt="logo"
+            class="logo"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#"
+                style="border: none; background-color: inherit; color: #000"
+                >Võ thuật tự vệ</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Lịch sử nguồn gốc</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sơ đồ bộ máy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div
+      class="container container-login text-center mt-3 d-flex flex-column justify-content-center align-items-center"
+    >
+      <h1 class="mb-3">Cảm ơn bạn đã quan tâm!</h1>
+      <p class="mb-5">Tham gia câu lạc bộ võ thuật SDMAS</p>
+      <div class="d-flex justify-content-center flex-column gap-5">
+        <form 
+          method="POST" 
+          action="{{ url_for('guest_login') }}" 
+          class="bg-white p-4 px-5 rounded shadow" 
+          style="max-width: 400px; width: 100%"
+        >
+          <h2 class="mb-4 fs-5" style="text-align: left">
+            Hãy cho chúng tôi biết email:
+          </h2>
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control"
+              name="gmail"
+              placeholder="Email"
+              required
+              style="background-color: var(--tertiary-color)"
+            />
+          </div>
+          <div class="d-flex justify-content-start mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="rememberMe" />
+              <label class="form-check-label" for="rememberMe">Ghi nhớ</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Xác nhận</button>
+        </form>
+        <form
+          class="bg-white p-4 rounded shadow"
+          style="max-width: 400px; width: 100%"
+        >
+          <div
+            class="end-content d-flex justify-content-center text-center align-items-center"
+            style="box-shadow: none; margin-top: 0"
+          >
+            <p class="login-content fs-6 mb-0">
+              Đã có tài khoản?
+              <a
+                href="{{ url_for('login') }}"
+                class="text-decoration-none"
+                style="color: var(--quaternary-color)"
+                >Đăng nhập</a
+              >
+              ngay
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
