@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ChatBox</title>
     <link rel="stylesheet" href="../static/css/chat.css" />
     <link rel="stylesheet" href="../static/css/main.css" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     />
     <link
       rel="stylesheet"
@@ -26,1156 +25,142 @@
     />
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
+    <div class="container-component">
+      <div class="d-flex">
         <!-- Sidebar -->
-        <div class="col-md-3 sidebar px-4">
+        <div class="sidebar">
           <div class="sidebar-header">
-            <div class="user-infor d-flex justify-content-between">
-              <div class="d-flex align-items-center mb-2 px-3">
-                <img
-                  src="../static/assets/img/avatar.jpg"
-                  alt="Avatar"
-                  class="img-fluid rounded-circle"
-                />
-                <div class="user-infor-content text-center px-2">
-                  <h5 class="py-0 my-0 ml-4">Private Chats</h5>
-                  <p class="py-0 my-0">Private chat</p>
-                </div>
-              </div>
-              <div class="user-infor-actions">
-                <i class="fa-solid fa-pen"></i>
-              </div>
-            </div>
             <div class="search-chat">
               <input
                 type="text"
                 class="form-control text-center"
-                placeholder="Tìm đoạn chat"
+                placeholder="Tìm kiếm tin nhắn"
                 style="border-radius: 10px"
               />
               <i class="fa-solid fa-magnifying-glass"></i>
             </div>
           </div>
           <!-- ===Danh sách người dùng chat=== -->
-          <ul class="list-group">
-            <li class="list-group-item">
-              <a
-                href="#"
-                class="item-links"
-                data-target="tin-nhan-1"
-                data-name="Nguyễn Thúy Quỳnh"
-                data-description="Bạch Vân 3"
-              >
-                <div class="user-item d-flex justify-content-between">
-                  <div class="d-flex align-items-center mb-2 w-75">
-                    <img
-                      src="../static/assets/img/avatar.jpg"
-                      alt="Avatar"
-                      class="img-fluid rounded-circle"
-                    />
-                    <div class="user-item-content text-truncate">
-                      <h5 class="py-0 my-0">Nguyễn Thúy Quỳnh</h5>
-                      <p class="py-0 my-0 w-75">Chào! Đi chơi không?</p>
+          <div class="scrollable-container">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a
+                  href="#"
+                  class="item-links"
+                  data-target="tin-nhan-1"
+                  data-name="Nguyễn Thúy Quỳnh"
+                  data-description="Đang hoạt động"
+                >
+                  <div class="user-item d-flex justify-content-between">
+                    <div class="d-flex align-items-center mb-2 w-75">
+                      <img
+                        src="../static/assets/img/avatar.jpg"
+                        alt="Avatar"
+                        class="img-fluid rounded-circle"
+                      />
+                      <div class="user-item-content text-truncate">
+                        <h5 class="py-0 my-0">Nguyễn Thúy Quỳnh</h5>
+                        <p class="py-0 my-0 w-75">Chào! Đi chơi không?</p>
+                      </div>
+                    </div>
+                    <div class="user-item-actions">
+                      <span class="time">10:30 AM</span>
+                      <i class="fa-solid fa-circle"></i>
                     </div>
                   </div>
-                  <div class="user-item-actions">
-                    <span class="time">10:30 AM</span>
-                    <i class="fa-solid fa-square-check"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a
-                href="#"
-                class="item-links"
-                data-target="tin-nhan-2"
-                data-name="Lưu Hữu Được"
-                data-description="Huyền Vũ 1"
-              >
-                <div class="user-item d-flex justify-content-between">
-                  <div class="d-flex align-items-center mb-2 w-75">
-                    <img
-                      src="../static/assets/img/avatar.jpg"
-                      alt="Avatar"
-                      class="img-fluid rounded-circle"
-                    />
-                    <div class="user-item-content text-truncate">
-                      <h5 class="py-0 my-0">Lưu Hữu Được</h5>
-                      <p class="py-0 my-0 w-75">Chào! Đi chơi không?</p>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a
+                  href="#"
+                  class="item-links"
+                  data-target="tin-nhan-2"
+                  data-name="SDMAS FPT"
+                  data-description="Đang hoạt động"
+                >
+                  <div class="user-item d-flex justify-content-between">
+                    <div class="d-flex align-items-center mb-2 w-75">
+                      <img
+                        src="../static/assets/img/avatar.jpg"
+                        alt="Avatar"
+                        class="img-fluid rounded-circle"
+                      />
+                      <div class="user-item-content text-truncate">
+                        <h5 class="py-0 my-0 group-chat">SDMAS FPT</h5>
+                        <p class="py-0 my-0 w-75">Chào! Đi chơi không?</p>
+                      </div>
+                    </div>
+                    <div class="user-item-actions">
+                      <span class="time">10:30 AM</span>
+                      <i class="fa-solid fa-circle" style="color: #15b786"></i>
                     </div>
                   </div>
-                  <div class="user-item-actions">
-                    <span class="time">10:30 AM</span>
-                    <i class="fa-solid fa-square-check"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a
-                href="#"
-                class="item-links"
-                data-target="tin-nhan-3"
-                data-name="Bế Chí Kiên"
-                data-description="Hạt thuẫn 1"
-              >
-                <div class="user-item d-flex justify-content-between">
-                  <div class="d-flex align-items-center mb-2 w-75">
-                    <img
-                      src="../static/assets/img/avatar.jpg"
-                      alt="Avatar"
-                      class="img-fluid rounded-circle"
-                    />
-                    <div class="user-item-content text-truncate">
-                      <h5 class="py-0 my-0">Bế Chí Kiên</h5>
-                      <p class="py-0 my-0 w-75">Hôm nay tập gì nhỉ?</p>
-                    </div>
-                  </div>
-                  <div class="user-item-actions">
-                    <span class="time">10:30 AM</span>
-                    <i class="fa-regular fa-square-check"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a
-                href="#"
-                class="item-links"
-                data-target="tin-nhan-4"
-                data-name="Phan Mạnh Quỳnh"
-                data-description="Bạch Vân 2"
-              >
-                <div class="user-item d-flex justify-content-between">
-                  <div class="d-flex align-items-center mb-2 w-75">
-                    <img
-                      src="../static/assets/img/avatar.jpg"
-                      alt="Avatar"
-                      class="img-fluid rounded-circle"
-                    />
-                    <div class="user-item-content text-truncate">
-                      <h5 class="py-0 my-0">Phan Mạnh Quỳnh</h5>
-                      <p class="py-0 my-0 w-75">
-                        Em muốn hát cho CLB nghe 1 vài bài nhạc sống động
-                      </p>
-                    </div>
-                  </div>
-                  <div class="user-item-actions">
-                    <span class="time">10:30 AM</span>
-                    <i class="fa-solid fa-square-check"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a
-                href="#"
-                class="item-links"
-                data-target="tin-nhan-5"
-                data-name="Lê Quang Tài"
-                data-description="Bạch Vân 3"
-              >
-                <div class="user-item d-flex justify-content-between">
-                  <div class="d-flex align-items-center mb-2 w-75">
-                    <img
-                      src="../static/assets/img/avatar.jpg"
-                      alt="Avatar"
-                      class="img-fluid rounded-circle"
-                    />
-                    <div class="user-item-content text-truncate">
-                      <h5 class="py-0 my-0">Lê Quang Tài</h5>
-                      <p class="py-0 my-0 w-75">Chào! Đi chơi không?</p>
-                    </div>
-                  </div>
-                  <div class="user-item-actions">
-                    <span class="time">10:30 AM</span>
-                    <i class="fi fi-ss-circle-1"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a
-                href="#"
-                class="item-links"
-                data-target="tin-nhan-6"
-                data-name="Nguyễn Khánh Duy"
-                data-description="Lam Ngân 2"
-              >
-                <div class="user-item d-flex justify-content-between">
-                  <div class="d-flex align-items-center mb-2 w-75">
-                    <img
-                      src="../static/assets/img/avatar.jpg"
-                      alt="Avatar"
-                      class="img-fluid rounded-circle"
-                    />
-                    <div class="user-item-content text-truncate">
-                      <h5 class="py-0 my-0">Nguyễn Khánh Duy</h5>
-                      <p class="py-0 my-0 w-75">
-                        1 trận thách đấu lấy đai đen thì sao nhỉ bla bla?
-                      </p>
-                    </div>
-                  </div>
-                  <div class="user-item-actions">
-                    <span class="time">10:30 AM</span>
-                    <i class="fi fi-ss-age-restriction-six"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         <!-- Chat Area -->
-        <div class="col-md-6 chat-area">
-          <div
-            class="chat-header d-flex justify-content-between align-items-center"
-          >
+        <div class="chat-area d-flex flex-column">
+          <div class="chat-area-top">
             <div
-              class="user-status d-flex justify-content-between align-items-center mx-2"
+              class="chat-header d-flex justify-content-between align-items-center"
             >
-              <div class="user-status-content d-flex align-items-center">
-                <img
-                  src="../static/assets/img/avatar.jpg"
-                  alt="Avatar"
-                  class="img-fluid rounded-circle text-center px-2"
-                />
-                <p>Lưu Hữu Được</p>
+              <div
+                class="user-status d-flex justify-content-between align-items-center"
+              >
+                <div class="user-status-content d-flex align-items-center">
+                  <img
+                    src="../static/assets/img/avatar.jpg"
+                    alt="Avatar"
+                    class="img-fluid rounded-circle text-center px-2"
+                  />
+                  <div class="d-flex flex-column">
+                    <p style="margin-bottom: 0">Lưu Hữu Được</p>
+                    <span class="status">Đang hoạt động</span>
+                  </div>
+                </div>
               </div>
-              <div class="user-status-activity">
-                <i class="fa-solid fa-circle-dot mx-5"></i>
-              </div>
-            </div>
-            <div class="user-actions">
-              <a href="#"><i class="fa-solid fa-search"></i></a>
-              <a href="#"><i class="fa-solid fa-heart"></i></a>
-              <a href="#"><i class="fa-solid fa-bell"></i></a>
-            </div>
-          </div>
-          <div class="chat-messages">
-            <div class="message received">
-              <div class="avt-user-send">
-                <img
-                  src="../static/assets/img/avatar.jpg"
-                  alt="Avatar"
-                  class="img-fluid rounded-circle"
-                />
-              </div>
-              <p>Ê làm sao ốm à</p>
-            </div>
-            <div class="message sent d-flex justify-content-end">
-              <p>Không, buồn ngủ</p>
-              <div class="avt-user-send">
-                <img
-                  src="../static/assets/img/avatar.jpg"
-                  alt="Avatar"
-                  class="img-fluid rounded-circle"
-                />
+              <div class="user-actions">
+                <a href="#"><i class="fa-solid fa-ellipsis"></i></a>
               </div>
             </div>
-            <div class="message received">
-              <div class="avt-user-send">
-                <img
-                  src="../static/assets/img/avatar.jpg"
-                  alt="Avatar"
-                  class="img-fluid rounded-circle"
-                />
+            <div class="chat-messages" style="max-height: 500px; overflow-y: auto;">
+              <div class="message received">
+                <div class="avt-user-send">
+                  <img
+                    src="../static/assets/img/avatar.jpg"
+                    alt="Avatar"
+                    class="img-fluid rounded-circle"
+                  />
+                </div>
+                <p>Ê làm sao ốm à</p>
               </div>
-              <p>
-                Được rồi, ngày mai phải dậy sớm đến trường trực nhật. Quét cả
-                sân trường đó m
-              </p>
-            </div>
-            <div class="message received">
-              <div class="avt-user-send">
-                <img
-                  src="../static/assets/img/avatar.jpg"
-                  alt="Avatar"
-                  class="img-fluid rounded-circle"
-                />
+              <div class="message sent d-flex justify-content-end">
+                <p>Không, buồn ngủ</p>
               </div>
-              <p>sinh hoạt tổng.pdf</p>
-            </div>
-            <div class="message sent d-flex justify-content-end">
-              <p>
-                Ok t chắc chắn nhớ rồi ok Cần mang gì nhiều Lorem ipsum dolor
-                sit amet.
-              </p>
-              <div class="avt-user-send">
-                <img
-                  src="../static/assets/img/avatar.jpg"
-                  alt="Avatar"
-                  class="img-fluid rounded-circle"
-                />
-              </div>
-            </div>
-            <div class="message received">
-              <div class="avt-user-send">
-                <img
-                  src="../static/assets/img/avatar.jpg"
-                  alt="Avatar"
-                  class="img-fluid rounded-circle"
-                />
-              </div>
-              <p>Mang chơi chả đi với mặc đồ bình thường cũng được</p>
-            </div>
-            <div class="message sent d-flex justify-content-end">
-              <p>OK</p>
-              <div class="avt-user-send">
-                <img
-                  src="../static/assets/img/avatar.jpg"
-                  alt="Avatar"
-                  class="img-fluid rounded-circle"
-                />
-              </div>
+              <!-- Khu vực hiển thị các tin nhắn mới sẽ được thêm vào đây -->
             </div>
           </div>
           <div
             class="chat-input d-flex justify-content-between align-items-center"
           >
-            <div class="microphone-btn">
-              <a href="#"><i class="fa-solid fa-microphone"></i></a>
+            <div class="image-btn">
+              <a href="#"><i class="fa-regular fa-image"></i></a>
             </div>
             <input
               type="text"
+              id="message-input"
               class="form-control"
               placeholder="Nhập tin của bạn"
             />
-            <div class="function-btn">
-              <a href="#"><i class="fa-solid fa-paperclip"></i></a>
-              <a href="#"><i class="fa-solid fa-camera"></i></a>
-              <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-            </div>
             <div class="btn-send-container">
-              <a href="#"><i class="fi fi-br-paper-plane-top btn-send"></i></a>
+              <a href="#" class="btn-send"
+                ><i class="fi fi-br-paper-plane-top"></i
+              ></a>
             </div>
           </div>
         </div>
-        <!-- User Profile -->
-        <div
-          class="col-md-3 user-profile d-flex flex-column align-items-center"
-        >
-          <div class="profile-header">
-            <img
-              src="../static/assets/img/avatar.jpg"
-              alt="Avatar"
-              class="img-fluid rounded-circle"
-            />
-            <h5>Ala laaa</h5>
-            <p>Hạt thuẫn 1</p>
-          </div>
-          <div class="profile-actions d-flex align-items-center">
-            <div class="chat-action d-flex align-items-center flex-column px-3">
-              <a href="#"><i class="fa-regular fa-comment fs-1"></i></a>
-              <span>Chat</span>
-            </div>
-            <div
-              class="video-call-action d-flex align-items-center flex-column px-3"
-            >
-              <a href="#"><i class="fa-solid fa-video fs-1"></i></a>
-              <span>Video Call</span>
-            </div>
-          </div>
-          <div class="user-actions d-flex align-items-center">
-            <div class="d-flex align-items-center mx-3">
-              <a
-                href="#"
-                class="d-flex align-items-center mx-3 text-decoration-none"
-              >
-                <i class="fa-solid fa-user"></i>
-                <p class="mx-2 my-2">Hồ sơ cá nhân</p>
-              </a>
-            </div>
-            <div class="d-flex align-items-center mx-3">
-              <a
-                href="#"
-                class="d-flex align-items-center mx-3 text-decoration-none"
-              >
-                <i class="fa-solid fa-heart"></i>
-                <p class="mx-2 my-2">Yêu thích</p>
-              </a>
-            </div>
-          </div>
-          <div class="profile-attachments pt-5">
-            <h6>Attachments</h6>
-            <div
-              class="attachments-items d-flex justify-content-around align-items-center"
-            >
-              <a href="#"><i class="fa-regular fa-file-pdf fs-1 mx-3"></i></a>
-              <a href="#"><i class="fa-solid fa-file-video fs-1 mx-3"></i></a>
-              <a href="#"><i class="fi fi-rr-mp3-file fs-1 mx-3"></i></a>
-              <a href="#"><i class="fa-solid fa-image fs-1 mx-3"></i></a>
-            </div>
-            <button class="button-views-profile">Xem</button>
-          </div>
-        </div>
-
-        <!-- ===Hiển thị tin nhắn=== -->
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <!-- Nội dung tin nhắn hiển thị ở đây -->
-          <div id="tin-nhan-1" class="tab-content">
-            <!-- tin nhắn -->
-            <div
-              class="chat-header d-flex justify-content-between align-items-center"
-            >
-              <div
-                class="user-status d-flex justify-content-between align-items-center mx-2"
-              >
-                <div class="user-status-content d-flex align-items-center">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle text-center px-2"
-                  />
-                  <p>Nguyễn Thúy Quỳnh</p>
-                </div>
-                <div class="user-status-activity">
-                  <i class="fa-solid fa-circle-dot mx-5"></i>
-                </div>
-              </div>
-              <div class="user-actions">
-                <a href="#"><i class="fa-solid fa-search"></i></a>
-                <a href="#"><i class="fa-solid fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-bell"></i></a>
-              </div>
-            </div>
-            <div class="chat-messages">
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Ê làm sao ốm à</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>Không, buồn ngủ</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>
-                  Được rồi, ngày mai phải dậy sớm đến trường trực nhật. Quét cả
-                  sân trường đó m
-                </p>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>sinh hoạt tổng.pdf</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>
-                  Ok t chắc chắn nhớ rồi ok Cần mang gì nhiều Lorem ipsum dolor
-                  sit amet.
-                </p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Mang chơi chả đi với mặc đồ bình thường cũng được</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>OK</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class="chat-input d-flex justify-content-between align-items-center"
-            >
-              <div class="microphone-btn">
-                <a href="#"><i class="fa-solid fa-microphone"></i></a>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Nhập tin của bạn"
-              />
-              <div class="function-btn">
-                <a href="#"><i class="fa-solid fa-paperclip"></i></a>
-                <a href="#"><i class="fa-solid fa-camera"></i></a>
-                <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-              </div>
-              <div class="btn-send-container">
-                <a href="#"
-                  ><i class="fi fi-br-paper-plane-top btn-send"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-          <div id="tin-nhan-2" class="tab-content">
-            <!-- tin nhắn -->
-            <div
-              class="chat-header d-flex justify-content-between align-items-center"
-            >
-              <div
-                class="user-status d-flex justify-content-between align-items-center mx-2"
-              >
-                <div class="user-status-content d-flex align-items-center">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle text-center px-2"
-                  />
-                  <p>Lưu Hữu Được</p>
-                </div>
-                <div class="user-status-activity">
-                  <i class="fa-solid fa-circle-dot mx-5"></i>
-                </div>
-              </div>
-              <div class="user-actions">
-                <a href="#"><i class="fa-solid fa-search"></i></a>
-                <a href="#"><i class="fa-solid fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-bell"></i></a>
-              </div>
-            </div>
-            <div class="chat-messages">
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Ê làm sao ốm à</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>Không, buồn ngủ</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>
-                  Được rồi, ngày mai phải dậy sớm đến trường trực nhật. Quét cả
-                  sân trường đó m
-                </p>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>sinh hoạt tổng.pdf</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>
-                  Ok t chắc chắn nhớ rồi ok Cần mang gì nhiều Lorem ipsum dolor
-                  sit amet.
-                </p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Mang chơi chả đi với mặc đồ bình thường cũng được</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>OK</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class="chat-input d-flex justify-content-between align-items-center"
-            >
-              <div class="microphone-btn">
-                <a href="#"><i class="fa-solid fa-microphone"></i></a>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Nhập tin của bạn"
-              />
-              <div class="function-btn">
-                <a href="#"><i class="fa-solid fa-paperclip"></i></a>
-                <a href="#"><i class="fa-solid fa-camera"></i></a>
-                <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-              </div>
-              <div class="btn-send-container">
-                <a href="#"
-                  ><i class="fi fi-br-paper-plane-top btn-send"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-          <div id="tin-nhan-3" class="tab-content">
-            <!-- tin nhắn -->
-            <div
-              class="chat-header d-flex justify-content-between align-items-center"
-            >
-              <div
-                class="user-status d-flex justify-content-between align-items-center mx-2"
-              >
-                <div class="user-status-content d-flex align-items-center">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle text-center px-2"
-                  />
-                  <p>Bế Chí Kiên</p>
-                </div>
-                <div class="user-status-activity">
-                  <i class="fa-solid fa-circle-dot mx-5"></i>
-                </div>
-              </div>
-              <div class="user-actions">
-                <a href="#"><i class="fa-solid fa-search"></i></a>
-                <a href="#"><i class="fa-solid fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-bell"></i></a>
-              </div>
-            </div>
-            <div class="chat-messages">
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Ê làm sao ốm à</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>Không, buồn ngủ</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>
-                  Được rồi, ngày mai phải dậy sớm đến trường trực nhật. Quét cả
-                  sân trường đó m
-                </p>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>sinh hoạt tổng.pdf</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>
-                  Ok t chắc chắn nhớ rồi ok Cần mang gì nhiều Lorem ipsum dolor
-                  sit amet.
-                </p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Mang chơi chả đi với mặc đồ bình thường cũng được</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>OK</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class="chat-input d-flex justify-content-between align-items-center"
-            >
-              <div class="microphone-btn">
-                <a href="#"><i class="fa-solid fa-microphone"></i></a>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Nhập tin của bạn"
-              />
-              <div class="function-btn">
-                <a href="#"><i class="fa-solid fa-paperclip"></i></a>
-                <a href="#"><i class="fa-solid fa-camera"></i></a>
-                <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-              </div>
-              <div class="btn-send-container">
-                <a href="#"
-                  ><i class="fi fi-br-paper-plane-top btn-send"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-          <div id="tin-nhan-4" class="tab-content">
-            <!-- tin nhắn -->
-            <div
-              class="chat-header d-flex justify-content-between align-items-center"
-            >
-              <div
-                class="user-status d-flex justify-content-between align-items-center mx-2"
-              >
-                <div class="user-status-content d-flex align-items-center">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle text-center px-2"
-                  />
-                  <p>Phan Mạnh Quỳnh</p>
-                </div>
-                <div class="user-status-activity">
-                  <i class="fa-solid fa-circle-dot mx-5"></i>
-                </div>
-              </div>
-              <div class="user-actions">
-                <a href="#"><i class="fa-solid fa-search"></i></a>
-                <a href="#"><i class="fa-solid fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-bell"></i></a>
-              </div>
-            </div>
-            <div class="chat-messages">
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Ê làm sao ốm à</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>Không, buồn ngủ</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>
-                  Được rồi, ngày mai phải dậy sớm đến trường trực nhật. Quét cả
-                  sân trường đó m
-                </p>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>sinh hoạt tổng.pdf</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>
-                  Ok t chắc chắn nhớ rồi ok Cần mang gì nhiều Lorem ipsum dolor
-                  sit amet.
-                </p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Mang chơi chả đi với mặc đồ bình thường cũng được</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>OK</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class="chat-input d-flex justify-content-between align-items-center"
-            >
-              <div class="microphone-btn">
-                <a href="#"><i class="fa-solid fa-microphone"></i></a>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Nhập tin của bạn"
-              />
-              <div class="function-btn">
-                <a href="#"><i class="fa-solid fa-paperclip"></i></a>
-                <a href="#"><i class="fa-solid fa-camera"></i></a>
-                <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-              </div>
-              <div class="btn-send-container">
-                <a href="#"
-                  ><i class="fi fi-br-paper-plane-top btn-send"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-          <div id="tin-nhan-5" class="tab-content">
-            <!-- tin nhắn -->
-            <div
-              class="chat-header d-flex justify-content-between align-items-center"
-            >
-              <div
-                class="user-status d-flex justify-content-between align-items-center mx-2"
-              >
-                <div class="user-status-content d-flex align-items-center">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle text-center px-2"
-                  />
-                  <p>Lê Quang Tài</p>
-                </div>
-                <div class="user-status-activity">
-                  <i class="fa-solid fa-circle-dot mx-5"></i>
-                </div>
-              </div>
-              <div class="user-actions">
-                <a href="#"><i class="fa-solid fa-search"></i></a>
-                <a href="#"><i class="fa-solid fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-bell"></i></a>
-              </div>
-            </div>
-            <div class="chat-messages">
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Ê làm sao ốm à</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>Không, buồn ngủ</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>
-                  Được rồi, ngày mai phải dậy sớm đến trường trực nhật. Quét cả
-                  sân trường đó m
-                </p>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>sinh hoạt tổng.pdf</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>
-                  Ok t chắc chắn nhớ rồi ok Cần mang gì nhiều Lorem ipsum dolor
-                  sit amet.
-                </p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Mang chơi chả đi với mặc đồ bình thường cũng được</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>OK</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class="chat-input d-flex justify-content-between align-items-center"
-            >
-              <div class="microphone-btn">
-                <a href="#"><i class="fa-solid fa-microphone"></i></a>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Nhập tin của bạn"
-              />
-              <div class="function-btn">
-                <a href="#"><i class="fa-solid fa-paperclip"></i></a>
-                <a href="#"><i class="fa-solid fa-camera"></i></a>
-                <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-              </div>
-              <div class="btn-send-container">
-                <a href="#"
-                  ><i class="fi fi-br-paper-plane-top btn-send"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-          <div id="tin-nhan-6" class="tab-content">
-            <div
-              class="chat-header d-flex justify-content-between align-items-center"
-            >
-              <div
-                class="user-status d-flex justify-content-between align-items-center mx-2"
-              >
-                <div class="user-status-content d-flex align-items-center">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle text-center px-2"
-                  />
-                  <p>Nguyễn Khánh Duy</p>
-                </div>
-                <div class="user-status-activity">
-                  <i class="fa-solid fa-circle-dot mx-5"></i>
-                </div>
-              </div>
-              <div class="user-actions">
-                <a href="#"><i class="fa-solid fa-search"></i></a>
-                <a href="#"><i class="fa-solid fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-bell"></i></a>
-              </div>
-            </div>
-            <div class="chat-messages">
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Ê làm sao ốm à</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>Không, buồn ngủ</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>
-                  Được rồi, ngày mai phải dậy sớm đến trường trực nhật. Quét cả
-                  sân trường đó m
-                </p>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>sinh hoạt tổng.pdf</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>
-                  Ok t chắc chắn nhớ rồi ok Cần mang gì nhiều Lorem ipsum dolor
-                  sit amet.
-                </p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-              <div class="message received">
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-                <p>Mang chơi chả đi với mặc đồ bình thường cũng được</p>
-              </div>
-              <div class="message sent d-flex justify-content-end">
-                <p>OK</p>
-                <div class="avt-user-send">
-                  <img
-                    src="../assets/img/avatar.jpg"
-                    alt="Avatar"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class="chat-input d-flex justify-content-between align-items-center"
-            >
-              <div class="microphone-btn">
-                <a href="#"><i class="fa-solid fa-microphone"></i></a>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Nhập tin của bạn"
-              />
-              <div class="function-btn">
-                <a href="#"><i class="fa-solid fa-paperclip"></i></a>
-                <a href="#"><i class="fa-solid fa-camera"></i></a>
-                <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-              </div>
-              <div class="btn-send-container">
-                <a href="#"
-                  ><i class="fi fi-br-paper-plane-top btn-send"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </main>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -1183,11 +168,74 @@
       src="https://kit.fontawesome.com/c148521509.js"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="../static/js/chat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Khởi tạo kết nối Socket.IO
+        const socket = io();
+    
+        // Tham gia phòng chat
+        let username = prompt('Nhập tên của bạn');
+        if (!username) {
+          username = "Anonymous"; // Tên mặc định nếu không nhập
+        }
+        const room = 'general';
+        socket.emit('join', { username: username, room: room });
+    
+        // Xử lý khi nhận tin nhắn từ server
+        socket.on('receive_message', function(data) {
+          const messageContainer = document.querySelector('.chat-messages');
+          const newMessage = document.createElement('div');
+          newMessage.classList.add('message', 'received');
+          newMessage.innerHTML = `<p><strong>${data.username}:</strong> ${data.message}</p>`;
+          messageContainer.appendChild(newMessage);
+          messageContainer.scrollTop = messageContainer.scrollHeight; // Tự động cuộn xuống
+        });
+    
+        // Xử lý khi gửi tin nhắn
+        const sendMessageButton = document.querySelector('.btn-send');
+        const messageInput = document.getElementById('message-input');
+        
+        // Gửi tin nhắn khi nhấn nút gửi
+        sendMessageButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          sendMessage();
+        });
+
+        // Gửi tin nhắn khi nhấn Enter
+        messageInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            sendMessage();
+          }
+        });
+    
+        // Hàm gửi tin nhắn
+        function sendMessage() {
+          const message = messageInput.value;
+          if (message.trim() !== '') {
+            socket.emit('send_message', { username: username, message: message, room: room });
+            messageInput.value = ''; // Xoá nội dung sau khi gửi
+
+            // Hiển thị tin nhắn của chính người dùng
+            const messageContainer = document.querySelector('.chat-messages');
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('message', 'sent', 'd-flex', 'justify-content-end');
+            newMessage.innerHTML = `<p>${message}</p>`;
+            messageContainer.appendChild(newMessage);
+            messageContainer.scrollTop = messageContainer.scrollHeight; // Tự động cuộn xuống
+          }
+        }
+    
+        // Xử lý tin nhắn chào mừng khi kết nối
+        socket.on('message', function(data) {
+          const messageContainer = document.querySelector('.chat-messages');
+          const newMessage = document.createElement('div');
+          newMessage.classList.add('message', 'received');
+          newMessage.innerHTML = `<p>${data.msg}</p>`;
+          messageContainer.appendChild(newMessage);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+F<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -575,64 +575,38 @@
               <div class="content-left">
                 <div class="top d-flex flex-row align-items-center">
                   <img src="../static/assets/img/avatar.jpg" alt="avatar" />
-                  <div class="info">
+                  <!-- <div class="info">
                     <p>Bế Chí Kiên</p>
                     <p>Sơn Động - BG</p>
                     <p>Tày</p>
                     <p>0979965784</p>
                     <p>beckikein@gmail.com</p>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="bottom d-flex gap-5">
-                  <div class="item">
-                    <p>Sinh viên</p>
-                    <p>Bế Chí Kiên</p>
-                    <p>Bế Chí Kiên</p>
-                    <p>Bế Chí Kiên</p>
-                  </div>
                   <div class="item mx-4">
-                    <p>ICTU</p>
-                    <p>Bế Chí Kiên</p>
-                    <p>Bế Chí Kiên</p>
-                    <p>Bế Chí Kiên</p>
+                    {% for member in members %}
+                    <p>Membership code: {{member.sdmas_id}}</p>
+                    <p>Level: {{ member.level }}</p>
                   </div>
                 </div>
               </div>
               <div class="content-right">
                 <div class="rows row-1">
-                  <p>Thông tin sinh hoạt</p>
-                  <p>Chi nhánh: <span class="chi-nhanh">ICTU</span></p>
-                  <p>
-                    Huấn luyện viên:
-                    <span class="huan-luyen-vien">Vũ Việt Anh</span>
-                  </p>
-                  <p>
-                    Số buổi điểm danh:
-                    <span class="so-buoi-diem-danh">99</span>
-                  </p>
-                  <p>
-                    Ngày gia nhập:
-                    <span class="ngay-gia-nhap">10/9/2020</span>
-                  </p>
+                  <p>Full name:{{ member.name }} </p>
+                  <p>Birthday: {{member.birthday}}</p>
+                  <p>Address:{{ member.address }} </p>
+                  <p>Phone Number: {{ member.phone }}  </p>
+                  <p>Kỳ thi gần nhất:{{ member.last_date }}</span></p>
+                  {% endfor %}
                   <p>Danh thiếp QR: <span class="danh-thiep-qr"></span></p>
                 </div>
-                <div class="rows row-2">
-                  <p>Đánh giá thể lực</p>
-                  <p>Chống đẩy tối đa: <span class="chi-nhanh">20</span></p>
-                  <p>
-                    Gập bụng tối đa:
-                    <span class="huan-luyen-vien">10</span>
-                  </p>
-                  <p>
-                    Chạy bứt tốc tối đa:
-                    <span class="so-buoi-diem-danh">20m</span>
-                  </p>
-                  <p>
-                    Squad tối đa:
-                    <span class="ngay-gia-nhap">20</span>
-                  </p>
-                </div>
                 <div class="rows row-3">
+                  <p>Bio:</p>
+                  
+                
+                </div>
+                <!-- <div class="rows row-3">
                   <p>Đánh giá</p>
                   <p>
                     Huấn luyện viên đánh giá:
@@ -641,7 +615,7 @@
                       Quisquam, quos.</span
                     >
                   </p>
-                </div>
+                </div> -->
                 <div class="rows row-4">
                   <button class="btn tao-danh-thiep">Tạo danh thiếp</button>
                 </div>
